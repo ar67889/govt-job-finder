@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Services and Jobs Portal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color: #fff !important;
+      font-size: 1.2rem;
+    }
+    .hero-section {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 80px 20px;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+    .hero-section h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .stats-section {
+      text-align: center;
+      font-size: 1.2rem;
+      color: white;
+    }
+    .stats-section span {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .search-bar input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .search-bar button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .scrollable-dropdown {
+      max-height: 250px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #888 transparent;
+    }
+    .scrollable-dropdown::-webkit-scrollbar {
+      width: 8px;
+    }
+    .scrollable-dropdown::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 4px;
+    }
+    .card {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .pagination .page-link {
+      color: #2575fc;
+      border-color: #2575fc;
+    }
+    .pagination .page-item.active .page-link {
+      background-color: #ffffff;
+      border-color: #2575fc;
+    }
+    footer {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+    .reference-section {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    .reference-section a {
+      color: #2575fc;
+      text-decoration: none;
+    }
+    .reference-section a:hover {
+      text-decoration: underline;
+    }
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.2rem;
+    }
+    .social-icons a:hover {
+      color: #2575fc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="fas fa-globe me-2"></i>Gov Services Portal
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Add navbar items if needed -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="container text-center">
+      <h1>All Government Services and Jobs in One Place</h1>
+      <p class="lead">Welcome to your one-stop portal for all government services and job opportunities across India.</p>
+      <div class="stats-section">
+        <p><span>13,931</span> Services Listed | <span>103,116</span> Jobs Available</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search & Filters Section -->
+  <section class="py-4 bg-white">
+    <div class="container">
+      <form method="get" action="{% url 'home' %}">
+        <div class="row align-items-center justify-content-center">
+          <!-- Left: Category Filter -->
+          <div class="col-md-3 mb-3">
+            <label for="categoryDropdown" class="form-label visually-hidden">Filter by Category</label>
+            <div class="dropdown">
+              <button class="btn btn-outline-primary dropdown-toggle w-100" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-filter me-2"></i>Select Category
+              </button>
+              <ul class="dropdown-menu w-100 scrollable-dropdown" aria-labelledby="categoryDropdown">
+                <li><a class="dropdown-item" href="?category=Medical"><i class="fas fa-stethoscope me-2"></i>Medical</a></li>
+                <li><a class="dropdown-item" href="?category=Engineering"><i class="fas fa-cogs me-2"></i>Engineering</a></li>
+                <li><a class="dropdown-item" href="?category=Law"><i class="fas fa-balance-scale me-2"></i>Law</a></li>
+                <li><a class="dropdown-item" href="?category=Finance"><i class="fas fa-dollar-sign me-2"></i>Finance</a></li>
+                <li><a class="dropdown-item" href="?category=Nurse"><i class="fas fa-user-nurse me-2"></i>Nurse</a></li>
+                <li><a class="dropdown-item" href="?category=Pharmacy"><i class="fas fa-pills me-2"></i>Pharmacy</a></li>
+                <li><a class="dropdown-item" href="?category=Dental"><i class="fas fa-tooth me-2"></i>Dental</a></li>
+                <li><a class="dropdown-item" href="?category=Aviation"><i class="fas fa-plane me-2"></i>Aviation</a></li>
+                <li><a class="dropdown-item" href="?category=Sports Quota"><i class="fas fa-futbol me-2"></i>Sports Quota</a></li>
+                <li><a class="dropdown-item" href="?category=Architecture"><i class="fas fa-building me-2"></i>Architecture</a></li>
+                <li><a class="dropdown-item" href="?category=Naval"><i class="fas fa-anchor me-2"></i>Naval</a></li>
+                <li><a class="dropdown-item" href="?category=Hotel Management"><i class="fas fa-concierge-bell me-2"></i>Hotel Management</a></li>
+                <li><a class="dropdown-item" href="?category=ITI/Diploma"><i class="fas fa-toolbox me-2"></i>ITI/Diploma</a></li>
+                <li><a class="dropdown-item" href="?category=Arts"><i class="fas fa-palette me-2"></i>Arts</a></li>
+                <li><a class="dropdown-item" href="?category=Agriculture"><i class="fas fa-seedling me-2"></i>Agriculture</a></li>
+                <li><a class="dropdown-item" href="?category=Teacher Training"><i class="fas fa-chalkboard-teacher me-2"></i>Teacher Training</a></li>
+                <li><a class="dropdown-item" href="?category=Any Degree"><i class="fas fa-graduation-cap me-2"></i>Any Degree</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Center: Search Bar -->
+          <div class="col-md-6 mb-3">
+            <label for="search" class="form-label visually-hidden">Search Jobs</label>
+            <div class="input-group search-bar">
+              <input type="text" name="search" value="{{ search_query }}" placeholder="Search for jobs by state or service..." class="form-control">
+              <button type="submit" class="btn btn-primary"><i class="fas fa-search me-2"></i>Search</button>
+            </div>
+          </div>
+          <!-- Right: Filter by Type -->
+          <div class="col-md-3 mb-3">
+            <label for="filterType" class="form-label visually-hidden">Filter by Type</label>
+            <select name="filter" class="form-select">
+              <option value="all" {% if filter_type == 'all' %}selected{% endif %}><i class="fas fa-list me-2"></i>All</option>
+              <option value="services" {% if filter_type == 'services' %}selected{% endif %}>Government Services</option>
+              <option value="jobs" {% if filter_type == 'jobs' %}selected{% endif %}>All Government Jobs</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Job Listings Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Government Services and Jobs Listings</h2>
+      <div class="row">
+        <div class="col-md-12">
+          {% if scraped_data %}
+            {% for job in scraped_data %}
+              <div class="mb-4">
+                <div class="card shadow-sm w-100 position-relative">
+                  <div class="card-header">{{ job.source }}</div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ job.title }}</h5>
+                    {% if job.date %}
+                      <p class="text-muted"><strong>Posted on:</strong> {{ job.date }}</p>
+                    {% endif %}
+                    <p class="card-text">{{ job.description }}</p>
+                    <a href="{{ job.apply_link }}" target="_blank" class="btn btn-primary w-30"><i class="fas fa-external-link-alt me-2"></i>Apply Now</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-center text-muted">No job listings found. Try searching with a different keyword.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Pagination Controls -->
+      {% if page.has_other_pages %}
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {% if page.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?search={{ search_query }}&filter={{ filter_type }}&category={{ category }}&page_no={{ page.previous_page_number }}">
+                <i class="fas fa-chevron-left me-2"></i>Previous
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+          {% endif %}
+          <li class="page-item active">
+            <span class="page-link">{{ page.number }}</span>
+          </li>
+          {% if page.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?search={{ search_query }}&filter={{ filter_type }}&category={{ category }}&page_no={{ page.next_page_number }}">
+                Next<i class="fas fa-chevron-right ms-2"></i>
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Next</span>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Reference Section -->
+  <section class="reference-section">
+    <div class="container">
+      <p>Data sourced from 
+        <a href="https://services.india.gov.in" target="_blank">services.india.gov.in</a> and 
+        <a href="https://allgovernmentjobs.in" target="_blank">allgovernmentjobs.in</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-4 text-center">
+    <div class="container">
+      <p>&copy; 2025 GovJobPortal. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
